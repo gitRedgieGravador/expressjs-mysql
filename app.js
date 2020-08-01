@@ -15,7 +15,6 @@ app.use(
 );
 
 var aes = new Encryptor()
-
 app.use(mung.json((body, req, res) => {
   console.log(req.path)
   if (req.path != "/decrypt") {
