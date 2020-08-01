@@ -1,17 +1,17 @@
 # Express-mysql
 
-## structured with middleware -> encryption, jsonwebtoken
+structured with middleware -> encryption, jsonwebtoken
 
-## easy manage mysql connection wrapper
+easy manage mysql connection wrapper
 
-## class base
+class base
 
 # HOW TO USE
 
-## clone the repo
+1. clone the repo
 
-## npm install
+2. npm install
 
-## open controls/books.js file and change database config.
+3. open controls/books.js file and change database config.
 
-## npm run dev
+4. npm run dev
