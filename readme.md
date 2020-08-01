@@ -6,7 +6,7 @@ easy manage mysql connection wrapper
 
 class base
 
-# HOW TO USE
+# HOW TO START
 
 1. clone the repo
 
