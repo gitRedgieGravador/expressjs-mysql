@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 var mung = require('express-mung');
-const MySql = require("./mysql");
 var Encryptor = require("./middleware/encryption");
 
 app.use(cors());
@@ -37,15 +36,6 @@ app.use(routes)
 
 app.get("/", (req, res) => {
   res.json("Hello world.");
-});
-
-
-var mysql = new MySql("localhost", "root", "", "migrator");
-app.get("/:db/:table", (req, res) => {
-  mysql.setDatabase(req.params.db);
-  mysql.query(`select * from ${req.params.table}`, resp => {
-    return res.json(resp);
-  });
 });
 
 
