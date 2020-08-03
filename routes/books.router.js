@@ -1,12 +1,7 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const router = express.Router();
-router.use(bodyParser.urlencoded({
-    extended: false
-}));
 
-router.use(bodyParser.json());
-const Books = require("../controls/books")
+const Books = require("../services/books")
 const Authorization = require('../middleware/authorization');
 const auth = new Authorization();
 const book = new Books();

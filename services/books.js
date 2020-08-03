@@ -1,10 +1,10 @@
 const MySql = require("../mysql");
-var mysql = new MySql("localhost", "root", "", "yourdatate");
+var mysql = new MySql();
 class Books {
   constructor() {}
   get(req, res) {
     /* change table name and database to get a success result. */
-    mysql.query("select * from table", resp => {
+    mysql.query("select * from test", resp => {
       res.json(resp);
     });
   }

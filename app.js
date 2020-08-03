@@ -14,9 +14,9 @@ app.use(
 );
 
 var aes = new Encryptor()
+const encrypted = false
 app.use(mung.json((body, req, res) => {
-  console.log(req.path)
-  if (req.path != "/decrypt") {
+  if (req.path != "/decrypt" && encrypted) {
     res.json({
       cypher: aes.encrypt(body)
     })
@@ -31,8 +31,10 @@ app.post("/decrypt", (req, res) => {
 });
 
 
-var routes = require('./routes/books.router')
-app.use(routes)
+var books = require('./routes/books.router')
+var tests = require('./routes/tests.router')
+app.use(books)
+app.use(tests)
 
 app.get("/", (req, res) => {
   res.json("Hello world.");

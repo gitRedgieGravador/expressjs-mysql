@@ -1,24 +1,19 @@
 const mysql = require('mysql');
 
 class MySql {
-    constructor(host, user, password, database) {
-        this.host = host
-        this.user = user
-        this.password = password
-        this.database = database
+    constructor() {
+        this.pool = mysql.createPool({
+            host: process.env.HOST || "localhost",
+            user: process.env.USER || "root",
+            password: process.env.PASSWORD || "",
+            database: process.env.DATABASE || "migrator"
+        });
     }
-    setDatabase(database) {
-        this.database = database
-        console.log("database: ", this.database)
+    setDatabase(config) {
+        this.pool = mysql.createPool(config);
     }
     query(statement, callback) {
-        const pool = mysql.createPool({
-            host: this.host,
-            user: this.user,
-            password: this.password,
-            database: this.database
-        });
-        pool.getConnection(function (err, connection) {
+        this.pool.getConnection(function (err, connection) {
             if (err) {
                 callback({
                     error: true,

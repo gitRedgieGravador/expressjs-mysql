@@ -12,6 +12,6 @@ class base
 
 2. npm install
 
-3. open controls/books.js file and change database config.
+3. open mysql.js file and change database config.
 
 4. npm run dev
