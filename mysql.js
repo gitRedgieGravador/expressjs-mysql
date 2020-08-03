@@ -6,7 +6,7 @@ class MySql {
             host: process.env.HOST || "localhost",
             user: process.env.USER || "root",
             password: process.env.PASSWORD || "",
-            database: process.env.DATABASE || "migrator"
+            database: process.env.DATABASE || "test"
         });
     }
     setDatabase(config) {
