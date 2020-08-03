@@ -13,17 +13,8 @@ class MySql {
         this.pool = mysql.createPool(config);
     }
     query(statement, callback) {
-        this.pool.getConnection(function (err, connection) {
-            if (err) {
-                callback({
-                    error: true,
-                    message: err.message,
-                    data: err
-                })
-                return;
-            }
-            connection.query(statement, function (err, results) {
-                connection.release();
+        try {
+            this.pool.getConnection(function (err, connection) {
                 if (err) {
                     callback({
                         error: true,
@@ -32,13 +23,31 @@ class MySql {
                     })
                     return;
                 }
-                callback({
-                    error: true,
-                    message: "Success",
-                    data: results
-                })
+                connection.query(statement, function (err, results) {
+                    connection.release();
+                    if (err) {
+                        callback({
+                            error: true,
+                            message: err.message,
+                            data: err
+                        })
+                        return;
+                    }
+                    callback({
+                        error: true,
+                        message: "Success",
+                        data: results
+                    })
+                });
             });
-        });
+        } catch (err) {
+            callback({
+                error: true,
+                message: err.message,
+                data: err
+            })
+            return;
+        }
     };
 }
 
