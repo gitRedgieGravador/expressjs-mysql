@@ -12,7 +12,8 @@ app.use(
     extended: true
   })
 );
-
+/*
+// For encrypted routes 
 var aes = new Encryptor()
 const encrypted = false
 app.use(mung.json((body, req, res) => {
@@ -23,7 +24,7 @@ app.use(mung.json((body, req, res) => {
   }
   return
 }));
-
+*/
 app.post("/decrypt", (req, res) => {
   var cypher = req.body.cypher
   console.log(cypher)
@@ -31,9 +32,7 @@ app.post("/decrypt", (req, res) => {
 });
 
 
-var books = require('./routes/books.router')
-var tests = require('./routes/tests.router')
-app.use(books)
+var tests = require('./routes/test.router')
 app.use(tests)
 
 app.get("/", (req, res) => {

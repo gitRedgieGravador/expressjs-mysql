@@ -2,8 +2,7 @@
 
 const jwt = require("jsonwebtoken");
 const tokenkey = "tokensercret123456";
-class Authorization {
-    constructor() {}
+module.exports = {
     /*
      *parameter data is an object that hold any data  
      * you want to embed in your token
@@ -15,12 +14,12 @@ class Authorization {
             expiresIn: "12h"
         });
         return acc_token;
-    }
+    },
 
     routeEnter(req, res, next) {
         console.log(req)
         next()
-    }
+    },
 
     /*
      * to be authorized create an api ang get an access token
@@ -47,8 +46,5 @@ class Authorization {
                 message: "You are not authenticated."
             });
         }
-    };
+    }
 }
-
-
-module.exports = Authorization;
